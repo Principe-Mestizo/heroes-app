@@ -1,0 +1,29 @@
+<ng-template #Loading>
+    <div class="mx-auto w-20 h-20 border-8 border-dashed rounded-full animate-spin border-blue-600"></div>
+</ng-template>
+
+<div *ngIf="hero; else Loading" class="container mx-auto mt-8">
+    <div class="flex items-center mb-4">
+        <button (click)="goBack()" class="flex items-center text-blue-600 hover:text-blue-800">
+            <i class="ri-arrow-left-line text-2xl"></i>
+            <span class="ml-2">Volver</span>
+        </button>
+    </div>
+
+    <div class="flex">
+        <div class="flex flex-col items-start">
+          <h2 class="text-2xl font-bold mb-2">{{ hero.superhero }}</h2>
+          <img class="mb-2 max-w-[200px] mx-auto" [src]="hero | heroImage" [alt]="hero.superhero">
+
+          <p class="text-gray-600 mb-4">{{ hero.alter_ego }}</p>
+      
+          <div *ngFor="let name of hero.characters.split(',') | slice:0:1"
+            class="flex flex-col mb-2 p-2 bg-gray-300 border border-gray-300 rounded">
+            <p>{{ name }}</p>
+          </div>
+      
+          <p class="text-gray-700">{{ hero.first_appearance }}</p>
+        </div>
+      </div>
+      
+</div>

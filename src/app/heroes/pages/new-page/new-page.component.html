@@ -1,0 +1,90 @@
+<h2 class="font-bold text-3xl ml-2">
+  {{ currentHero.id ? 'Editar' : 'Agregar' }}
+  Heroe
+</h2>
+<div class="flex max-w-[1000px] mx-auto bg-white p-8 rounded-md shadow-md">
+
+  <form [formGroup]="heroForm" (ngSubmit)="onSubmit()" class="w-1/2 pr-4">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="superhero">
+        Super Heroe
+      </label>
+      <input class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+        type="text" id="superhero" placeholder="Super Heroe" formControlName="superhero">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="alterEgo">
+        Alter ego
+      </label>
+      <input class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+        type="text" id="alterEgo" placeholder="Alter ego*" formControlName="alter_ego">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="firstAppearance">
+        Primera aparicion
+      </label>
+      <input class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+        type="text" id="firstAppearance" placeholder="Primera aparicion" formControlName="first_appearance">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="characters">
+        Personajes
+      </label>
+      <input class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+        type="text" id="characters" placeholder="Personajes" formControlName="characters">
+    </div>
+
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="alt_img">
+        Alter Image
+      </label>
+      <input class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+        type="text" id="alt_img" placeholder="Imagen" formControlName="alt_img">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="comic">
+        Comic
+      </label>
+      <select class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+         formControlName="publisher">
+        <option value="" disabled selected>
+          Selecione ....
+        </option>
+        <option *ngFor="let publisher of publishers" [value]="publisher.id">
+          {{ publisher.desc }}
+        </option>
+      </select>
+    </div>
+
+    <div class="flex justify-between">
+      <button
+      *ngIf="currentHero.id"
+        class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+        type="button"
+        (click)="onDeleteHero()"
+        >
+        Borrar
+      </button>
+
+      <button
+        class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+        type="submit"
+        
+        >
+        <!-- Cuando esta fuera el clcl onSubmit en mic aso esta dentro del formualrio -->
+        <!-- (click)="onSubmit()" -->
+        Guardar
+      </button>
+    </div>
+  </form>
+
+  <div class="w-1/2 mt-8">
+    <img class="w-full h-full rounded-md shadow-md" [src]="currentHero | heroImage" [alt]="">
+  </div>
+</div>
+

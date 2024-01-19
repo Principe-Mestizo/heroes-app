@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import 'ngx-toastr/toastr';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    list-style: none;
+    /* outline: 1px solid blue;  */
+}
+
+body {
+  
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.login__register{
+    color:rgb(143, 40, 40);
+    font-weight: bold;
+}
+

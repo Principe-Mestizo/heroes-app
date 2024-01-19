@@ -1,0 +1,82 @@
+<div [ngClass]="{ flex: true, 'overflow-x-hidden': true, 'h-screen': true }" class="flex">
+    <aside [ngClass]="{
+      'flex-shrink-0': true,
+      'w-64': true,
+      flex: true,
+      'flex-col': true,
+      'border-r': true,
+      'transition-all': true,
+      'duration-300': true,
+      '-ml-64': !sidebarOpen
+    }" class="z-10">
+        <div class="h-screen bg-gray-900">
+            <div>
+                <h1 class="text-white text-xl font-bold uppercase tracking-[4px] p-8">
+                    Heroes App
+                </h1>
+            </div>
+
+            <nav class="px-4">
+              
+                <a routerLink="./list"
+                    class="flex items-center gap-4 text-gray-400 py-2 mb-2  hover:text-gray-300 transition-colors">
+                    <i class="ri-file-list-line text-2xl"></i>
+                    Listado 
+                </a>
+
+                <a routerLink="./new-hero"
+                    href="#" class="flex items-center gap-4 text-gray-400 py-2 mb-2  hover:text-gray-300 transition-colors">
+                    <i class="ri-folder-add-fill text-2xl"></i>
+                    Añadir
+                </a>
+
+                <a routerLink="./search"
+                    href="#" class="flex items-center gap-4 text-gray-400  py-2 mb-2  hover:text-gray-300 transition-colors">
+                    <i class="ri-search-line text-2xl"></i>
+                    Buscar
+                </a>
+
+              
+            </nav>
+
+            <div class="">
+                <a class="px-4 py-2 cursor-pointer flex items-center gap-4 text-gray-400 hover:text-gray-300 transition-colors">
+                    <i class="ri-logout-box-line text-2xl"></i>Logout
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <div class="flex-1">
+        <header class="flex items-center p-4 px-5 font-semibold text-gray-100 bg-gray-900 justify-between">
+            <button class="mr-4" (click)="sidebarOpen = !sidebarOpen">
+              <i class="ri-menu-line text-lg"></i>
+              
+            </button>
+    
+            <div class="flex items-center gap-2 ">
+              <li>
+                <a (click)="toogleMenuUser()" class="flex items-center cursor-pointer">
+                  Logout
+                  <i *ngIf="subMenuUser" class="ri-arrow-up-s-line"></i>
+                  <i *ngIf="!subMenuUser" class="ri-arrow-down-s-line"></i>
+                </a>
+                <div class=" right-0 -z-1 w-full md:w-[350px] lg:right-5 lg:w-[200px] py-2  " [ngClass]="{'hidden': !subMenuUser, 'absolute': true, 'mt-8': true, 'bg-white': true, 'border': true, 'rounded': true, 'shadow': true }">
+                    
+                    <!-- Contenido del menú desplegable del usuario -->
+                    <a href="#" class="block mb-2 px-4 py-2 text-gray-800 hover:bg-gray-200">Perfil</a>
+                    <a href="#" class="block mb-2 px-4 py-2 text-gray-800 hover:bg-gray-200">Configuración</a>
+                    <a href="#" class="block mb-2 px-4 py-2 text-gray-800 hover:bg-gray-200">Cerrar sesión</a>
+                </div>
+              </li>
+            </div>
+        </header>
+    
+        
+    
+        <main class="p-8 ">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+    
+</div>

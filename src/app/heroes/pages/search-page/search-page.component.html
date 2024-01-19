@@ -1,0 +1,32 @@
+<!-- search-page.component.html -->
+
+<div class="flex flex-col p-2">
+
+    <h3 class="text-lg font-semibold mb-2">Buscador</h3>
+  
+    <div class="relative">
+      <label for="heroSearch" class="sr-only">Buscador de héroes</label>
+      <input
+        type="text"
+        id="heroSearch"
+        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500"
+        placeholder="Buscador de héroes"
+        [formControl]="searchInput"
+        (input)="searchHero()"
+      />
+  
+      <div class="absolute z-10 mt-2 bg-white border border-gray-300 rounded-lg shadow-lg w-full" *ngIf="heroes.length > 0 && searchInput.value">
+        <div *ngFor="let hero of heroes" class="p-2 cursor-pointer hover:bg-gray-100" (click)="onSelectHero(hero)">
+          {{ hero.superhero }}
+        </div>
+  
+        <div *ngIf="heroes.length === 0 && searchInput.value && searchInput.value.length > 0" class="p-2">
+          No se encontró nada con el término {{ searchInput.value }}
+        </div>
+      </div>
+    </div>
+  
+    <pre class="mt-4 text-sm text-gray-600">{{ selectedHero | json }}</pre>
+  
+  </div>
+  

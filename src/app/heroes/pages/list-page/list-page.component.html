@@ -1,0 +1,13 @@
+
+
+
+<h2 class="mb-4 text-gray-600 text-2xl font-bold uppercase  ml-10">Listado de héroes</h2>
+<div class="flex flex-wrap justify-items-start gap-6  ">
+    <div *ngFor="let hero of heroes" class="mx-auto">
+        <app-card-heroe 
+            [hero]="hero"
+        >
+
+        </app-card-heroe>
+    </div>
+</div>

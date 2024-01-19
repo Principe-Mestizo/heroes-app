@@ -1,0 +1,23 @@
+ 
+<!-- *ngFor="let name of hero.characters.split(',') | slice:0:3"  -->
+
+<div class="bg-gray-50 p-6 w-[350px] m-h-[750px] shadow-lg shadow-gray-500/40 rounded-md overflow-hidden">
+
+  <p class="font-bold text-gray-700 text-xl">{{ hero.superhero }}</p>
+  <p class="font-bold text-gray-600 text-sm mb-1 "> {{ hero.alter_ego }} </p>
+  <img class="mb-2" [src]="hero | heroImage" [alt]="hero.superhero" >
+  <p class="text-gray-600 text-md font-semibold mb-4"> {{ hero.publisher }} </p>
+  <p> <strong>Primera aparacion:</strong> {{ hero.first_appearance }} </p>
+  
+  <div *ngFor="let name of hero.characters.split(',') | slice:0:1" class="w-full  p-1 ">
+    <p class="bg-gray-200 w-[130px] rounded-md p-2 text-center ">
+     {{ name }}
+    </p>
+  </div>
+  
+
+  <div class="flex justify-between ">
+      <button class="text-purple-800 font-bold hover:bg-purple-100  p-2 rounded-md" [routerLink]="['/heroes/edit', hero.id]"><i class="ri-pencil-fill mr-1"></i>Editar</button>
+      <button class="font-bold text-gray-700 hover:bg-gray-200 p-2 rounded-md" [routerLink]="['/heroes', hero.id]"> <i class="ri-more-line mr-1"></i>Más..</button>
+  </div>
+</div>
